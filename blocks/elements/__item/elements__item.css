@@ -1,6 +1,5 @@
 .elements__item {
-	min-height: 361px;
-	background-color: #FFF;
-	border-radius: 10px;
-	overflow: hidden;
+	min-height: 362px;
+	/*border-radius: 10px;*/
+	/*overflow: hidden;*/
 }
