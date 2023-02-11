@@ -3,8 +3,6 @@
 	margin: 0;
 	height: calc(100% - 282px);
 	display: flex;
-	flex-wrap: wrap;
-    align-content: center;
     justify-content: space-between;
 	background-color: white;
 	border-bottom-left-radius: 10px;
