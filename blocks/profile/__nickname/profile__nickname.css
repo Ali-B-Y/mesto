@@ -1,3 +1,4 @@
 .profile__nickname {
 	display: flex;
+	gap: 19px;
 }
