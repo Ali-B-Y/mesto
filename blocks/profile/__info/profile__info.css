@@ -1,4 +1,5 @@
 .profile__info {
+	max-width: calc(100% - 120px - 150px - 60px);
 	display: flex;
 	flex-direction: column;
 	gap: 9px;

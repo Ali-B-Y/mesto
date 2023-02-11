@@ -1,7 +1,5 @@
 .elements__figcaption {
-	padding: 0;
-	margin: 0;
-	height: calc(100% - 282px);
+	padding: 25px 20px 25px 21px;
 	display: flex;
     justify-content: space-between;
 	background-color: white;

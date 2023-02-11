@@ -1,13 +1,9 @@
 .elements__foto {
-	/* max-width: 282px; */
-    /* max-height: 282px; */
-    /* aspect-ratio: 1/1; */
-    max-width: 100%;
-    /* min-width: 282px; */
-    height: calc(100% - 79px);
+    width: 100%;
+    display: block;
     object-fit: cover;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	display: block;
-
+    object-position: center;
+    aspect-ratio: 1/1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
