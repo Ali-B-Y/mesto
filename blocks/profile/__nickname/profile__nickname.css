@@ -1,5 +1,4 @@
 .profile__nickname {
-	display: grid;
+	display: flex;
 	gap: 19px;
-	grid-template-columns: 1fr 24px;
 }
