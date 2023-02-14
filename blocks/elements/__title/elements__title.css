@@ -1,6 +1,6 @@
 .elements__title {
 	margin: 0;
-	align-self: center;
+	width: calc(100% - 22px);
 	color: #000;
 	text-overflow: ellipsis;
 	white-space: nowrap;

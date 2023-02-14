@@ -7,5 +7,13 @@
 	background-image: url("../../../images/edit-button.svg");
 	background-position: center;
     background-repeat: no-repeat;
-	border: 1px solid #FFFFFF;
+	border: 1px solid #FFF;
+}
+
+@media screen and (max-width: 666px) {
+	.profile__edit-button {
+		margin: 9px 0 0;
+		width: 18px;
+        height: 18px;
+	}
 }

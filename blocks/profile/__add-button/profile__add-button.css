@@ -11,3 +11,9 @@
 	border: 2px solid #FFF;
     border-radius: 2px;
 }
+
+@media screen and (max-width: 666px) {
+	.profile__add-button {
+		width: 100%;
+	}
+}

@@ -1,0 +1,13 @@
+.popup__input-nickname {
+	padding: 0 0 13px 0;
+	margin: 0 0 30px;
+	border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	font-family: inherit;
+	text-overflow: ellipsis;
+}
+
+.popup__input-nickname:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+}
