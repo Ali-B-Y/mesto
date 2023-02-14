@@ -8,6 +8,8 @@ const profileNickname = document.querySelector('.profile__nickname');
 const profileJob = document.querySelector('.profile__job')
 
 const handleEditButtonClick = () => {
+	nameInput.value = profileNickname.textContent;
+	jobInput.value = profileJob.textContent;
     popup.classList.add('popup_opened');
 }
 
