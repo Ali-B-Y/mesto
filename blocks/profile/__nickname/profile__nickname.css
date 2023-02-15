@@ -1,5 +1,5 @@
 .profile__nickname {
-	margin: 0;
+    margin: 0;
     max-width: calc(100% - 19px - 24px);
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -10,10 +10,10 @@
 }
 
 @media screen and (max-width: 666px) {
-	.profile__nickname {
+    .profile__nickname {
         margin-left: 25px;
         max-width: calc(100% - 10px - 18px);
-		font-size: 27px;
+        font-size: 27px;
         line-height: 33px;
-	}
+    }
 }

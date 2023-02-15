@@ -6,6 +6,6 @@
 @media screen and (max-width: 666px) {
 	.profile__name {
 		justify-content: center;
-        gap: 10px;
+		gap: 10px;
 	}
 }

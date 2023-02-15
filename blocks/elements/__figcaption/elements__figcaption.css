@@ -1,9 +1,8 @@
 .elements__figcaption {
 	padding: 25px 20px 25px 21px;
 	display: flex;
-    justify-content: space-between;
+	justify-content: space-between;
 	background-color: white;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
 }
