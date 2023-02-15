@@ -1,0 +1,9 @@
+.active:active {
+	padding: 0;
+	width: 22px;
+	height: 19px;
+	background-color: transparent;
+	background-image: url("../../images/black-heart.svg");
+	border: none;
+	align-self: center;
+}

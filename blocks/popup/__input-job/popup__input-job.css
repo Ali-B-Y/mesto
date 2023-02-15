@@ -3,8 +3,9 @@
 	margin: 0 0 48px;
 	border: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	font-family: inherit;
-	text-overflow: ellipsis;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
 }
 
 .popup__input-job:focus {
