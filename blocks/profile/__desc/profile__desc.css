@@ -1,4 +1,4 @@
-.profile__job {
+.profile__desc {
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 666px) {
-    .profile__job {
+    .profile__desc {
         font-size: 14px;
         line-height: 17px;
         text-align: center;

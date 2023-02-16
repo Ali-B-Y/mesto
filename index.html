@@ -5,94 +5,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css" />
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="root">
-
   <header class="header">
     <img class="header__logo" src="./images/header-logo.svg" alt="Логотип">
   </header>
-
   <main class="content">
     <section class="profile">
       <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Аватар пользователя">
       <div class="profile__info">
         <div class="profile__name">
           <h1 class="profile__nickname">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button hover"></button>
+          <button class="profile__edit-button hover" type="button" aria-label="Изменить профиль"></button>
         </div>
-        <p class="profile__job">Исследователь океана</p>
+        <p class="profile__desc">Исследователь океана</p>
       </div>
-      <button class="profile__add-button hover"></button>
+      <button class="profile__add-button hover" type="button" aria-label="Добавить карточку"></button>
     </section>
-
-    <section class="elements">
-      <ul class="elements__list">
-        <li class="elements__item">
-          <img src="./images/Ашхабад1.jpg" alt="Ашхабад" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Ашхабад-Туркмения</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/Астана2.jpg" alt="Астана" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Астана-Казахстан</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/Бишкек3.jpg" alt="Бишкек" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Бишкек-Киргизия</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/Душанбе4.jpg" alt="Душанбе" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Душанбе-Таджикистан</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/Кабул5.jpg" alt="Кабул" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Кабул-Афганистан</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/Ташкент6.jpg" alt="Ташкент" class="elements__foto">
-          <div class="elements__figcaption">
-            <h2 class="elements__title">Ташкент-Узбекистан</h2>
-            <button class="elements__like-button active"></button>
-          </div>
-        </li>
-      </ul>
+    <section class="grid">
+      <article class="item">
+        <img src="./images/Ашхабад1.jpg" alt="Ашхабад" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Ашхабад-Туркмения</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
+      <article class="item">
+        <img src="./images/Астана2.jpg" alt="Астана" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Астана-Казахстан</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
+      <article class="item">
+        <img src="./images/Бишкек3.jpg" alt="Бишкек" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Бишкек-Киргизия</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
+      <article class="item">
+        <img src="./images/Душанбе4.jpg" alt="Душанбе" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Душанбе-Таджикистан</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
+      <article class="item">
+        <img src="./images/Кабул5.jpg" alt="Кабул" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Кабул-Афганистан</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
+      <article class="item">
+        <img src="./images/Ташкент6.jpg" alt="Ташкент" class="item__photo">
+        <div class="item__figcaption">
+          <h2 class="item__title">Ташкент-Узбекистан</h2>
+          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
+        </div>
+      </article>
     </section>
   </main>
-
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-button hover"></button>
+      <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form">
-        <input class="popup__input-nickname" type="text" required name="nickname" placeholder="имя">
-        <input class="popup__input-job" type="text" name="job" required placeholder="о себе">
-        <button class="popup__save-button">Сохранить</button>
+      <form class="popup__form" name="edit-profile">
+        <input class="popup__input popup__input_js_nickname" type="text" required name="nickname" placeholder="Имя">
+        <input class="popup__input popup__input_js_desc" type="text" name="desc" required placeholder="Описание">
+        <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
-  </section>
-
-  <script src="./script/index.js"></script>
-
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
