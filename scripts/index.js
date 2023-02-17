@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup');
 const buttonEdit = document.querySelector('.profile__edit-button');
-const buttonСlose = document.querySelector('.popup__close-button');
+const buttonClose = document.querySelector('.popup__close-button');
 const form = document.querySelector('.popup__form');
 const nicknameInput = document.querySelector('.popup__input_js_nickname');
 const descInput = document.querySelector('.popup__input_js_desc');
@@ -34,16 +34,10 @@ function handleFormSubmit(event) {
 // 	}
 // }
 
-
 buttonEdit.addEventListener('click', handleEditProfile);
 form.addEventListener('submit', handleFormSubmit);
-buttonСlose.addEventListener('click', () => {
+buttonClose.addEventListener('click', () => {
 	closePopup(popup);
 })
+
 //popup.addEventListener('click', handlePopupClick);
-
-
-
-
-
-
