@@ -10,6 +10,7 @@ const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 
 // попап просмотр увеличенного фото
 const popupViewPhoto = document.querySelector('.popup_js_view-photo');
+const buttonCloseViewPhoto = popupViewPhoto.querySelector('.popup-view__close-button');
 
 // форма профиля
 const form = document.querySelector('.popup__form');
@@ -70,9 +71,12 @@ const createCard = ((data) => {
     card.remove();
   }
   const handleCardPhoto = () => {
-    openPopup(popupViewPhoto);
-    const popupPhoto = popupViewPhoto.querySelector('.popup__photo');
+    const popupPhoto = popupViewPhoto.querySelector('.popup-view__photo');
+    const popupTitle = popupViewPhoto.querySelector('.popup-view__title');
     popupPhoto.src = cardPhoto.src;
+    popupPhoto.alt = cardPhoto.alt;
+    popupTitle.textContent = cardTitle.textContent;
+    openPopup(popupViewPhoto);
   }
   buttonRemoveCard.addEventListener('click', handleRemoveCard);
   buttonLikeCard.addEventListener('click',handleLikeButton);
@@ -93,58 +97,45 @@ initialCards.forEach(el => {
 });
 
 
-
-
-// cardPhoto.addEventListener('click', () => {
-//   openPopup(popupViewPhoto);
-// });
-
-
-
-
-
-
-
-const handleEditProfile = () => {
-	nicknameInput.value = profileNickname.textContent;
-	descInput.value = profileDesc.textContent;
-	openPopup(popupEditProfile);
-}
-
-const handleAddCard = () => {
-  openPopup(popupAddCard);
-}
-
-function handleFormSubmit(event) {
-	event.preventDefault();
-	profileNickname.textContent = nicknameInput.value;
-	profileDesc.textContent = descInput.value;
-	closePopup(popupEditProfile);
-}
-
 // const handlePopupClick = (event) => {
 // 	if (event.target === event.currentTarget) {
 // 		popup.classList.remove('popup_opened');
 // 	}
 // }
 
+//popup.addEventListener('click', handlePopupClick);
+
+
+
+const handleEditProfile = () => {
+  nicknameInput.value = profileNickname.textContent;
+  descInput.value = profileDesc.textContent;
+  openPopup(popupEditProfile);
+}
+
 buttonEditProfile.addEventListener('click', handleEditProfile);
 buttonCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEditProfile);
-})
+});
+
+const handleAddCard = () => {
+  openPopup(popupAddCard);
+}
 
 buttonAddCard.addEventListener('click', handleAddCard);
 buttonCloseAddCard.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
 
+function handleFormSubmit(event) {
+  event.preventDefault();
+  profileNickname.textContent = nicknameInput.value;
+  profileDesc.textContent = descInput.value;
+  closePopup(popupEditProfile);
+}
+
 form.addEventListener('submit', handleFormSubmit);
 
-
-//popup.addEventListener('click', handlePopupClick);
-
-
-
-
-
-
+buttonCloseViewPhoto.addEventListener('click', () => {
+  closePopup(popupViewPhoto);
+});
