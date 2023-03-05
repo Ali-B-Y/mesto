@@ -12,9 +12,6 @@ const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 const popupViewPhoto = document.querySelector('.popup_js_view-photo');
 const cardPhoto = document.querySelector('.card__photo');
 
-// кнопки лайк и урна
-const buttonLikeCard = document.querySelector('.card__like-button');
-
 // форма профиля
 const form = document.querySelector('.popup__form');
 const nicknameInput = document.querySelector('.popup__input_js_nickname');
@@ -61,19 +58,41 @@ const closePopup = (popup) => {
 	popup = popup.classList.remove('popup_opened');
 }
 
-// Дублируем 6 карточек начального экрана, клонируем шаблон, создаем и наполняем карточки
-initialCards.forEach(el => {
+const createCard = ((data) => {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
+  const buttonRemoveCard = card.querySelector('.card__remove-button');
+  const buttonLikeCard = card.querySelector('.card__like-button');
   const cardPhoto = card.querySelector('.card__photo');
   const cardTitle = card.querySelector('.card__title');
-  cardPhoto.src = el.link;
-  cardPhoto.setAttribute('alt', el.name);
-  cardTitle.textContent = el.name;
-  cardsContainer.append(card);
+  const handleToggleLike = () => {
+    buttonLikeCard.classList.toggle('card__like-button_active');
+  }
+  const handleDeleteCard = () => {
+    card.remove();
+  }
+  buttonRemoveCard.addEventListener('click', handleDeleteCard);
+  buttonLikeCard.addEventListener('click',handleToggleLike);
+  cardPhoto.src = data.link;
+  cardTitle.textContent = data.name;
+  cardPhoto.alt = data.name;
+  return card;
 })
 
+const renderCard = (data) => {
+  const card = createCard(data);
+  cardsContainer.append(card);
+}
+
+initialCards.forEach(el => {
+  renderCard(el);
+});
 
 
+
+
+// cardPhoto.addEventListener('click', () => {
+//   openPopup(popupViewPhoto);
+// });
 
 
 
@@ -121,27 +140,6 @@ form.addEventListener('submit', handleFormSubmit);
 
 
 
-// cardPhoto.addEventListener('click', () => {
-//   openPopup(popupViewPhoto);
-// });
 
 
-
-
-const buttonsRemoveCard = document.querySelectorAll('.card__remove-button');
-// вешаем на каждую урну слушатель
-// buttonsRemoveCard.forEach(() => {
-//   addEventListener('click', (event) => {
-//     const eventTarget = event.target;
-//     const removedCard = eventTarget.closest('.card');
-//     removedCard.remove();
-//   });
-// });
-buttonsRemoveCard.forEach(()=> {
-  addEventListener('click', evt => {
-    const eventTarget = evt.target;
-    const removedCard = eventTarget.closest('.card');
-    removedCard.remove();
-  });
-});
 
