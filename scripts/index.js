@@ -10,7 +10,6 @@ const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 
 // попап просмотр увеличенного фото
 const popupViewPhoto = document.querySelector('.popup_js_view-photo');
-const cardPhoto = document.querySelector('.card__photo');
 
 // форма профиля
 const form = document.querySelector('.popup__form');
@@ -64,14 +63,20 @@ const createCard = ((data) => {
   const buttonLikeCard = card.querySelector('.card__like-button');
   const cardPhoto = card.querySelector('.card__photo');
   const cardTitle = card.querySelector('.card__title');
-  const handleToggleLike = () => {
+  const handleLikeButton = () => {
     buttonLikeCard.classList.toggle('card__like-button_active');
   }
-  const handleDeleteCard = () => {
+  const handleRemoveCard = () => {
     card.remove();
   }
-  buttonRemoveCard.addEventListener('click', handleDeleteCard);
-  buttonLikeCard.addEventListener('click',handleToggleLike);
+  const handleCardPhoto = () => {
+    openPopup(popupViewPhoto);
+    const popupPhoto = popupViewPhoto.querySelector('.popup__photo');
+    popupPhoto.src = cardPhoto.src;
+  }
+  buttonRemoveCard.addEventListener('click', handleRemoveCard);
+  buttonLikeCard.addEventListener('click',handleLikeButton);
+  cardPhoto.addEventListener('click', handleCardPhoto);
   cardPhoto.src = data.link;
   cardTitle.textContent = data.name;
   cardPhoto.alt = data.name;
