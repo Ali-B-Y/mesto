@@ -9,10 +9,13 @@
 </head>
 
 <body class="root">
+
   <header class="header">
     <img class="header__logo" src="./images/header-logo.svg" alt="Логотип">
   </header>
+
   <main class="content">
+
     <section class="profile">
       <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Аватар пользователя">
       <div class="profile__info">
@@ -24,55 +27,16 @@
       </div>
       <button class="profile__add-button hover" type="button" aria-label="Добавить карточку"></button>
     </section>
-    <section class="grid">
-      <article class="item">
-        <img src="./images/Ашхабад1.jpg" alt="Ашхабад" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Ашхабад-Туркмения</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-      <article class="item">
-        <img src="./images/Астана2.jpg" alt="Астана" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Астана-Казахстан</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-      <article class="item">
-        <img src="./images/Бишкек3.jpg" alt="Бишкек" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Бишкек-Киргизия</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-      <article class="item">
-        <img src="./images/Душанбе4.jpg" alt="Душанбе" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Душанбе-Таджикистан</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-      <article class="item">
-        <img src="./images/Кабул5.jpg" alt="Кабул" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Кабул-Афганистан</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-      <article class="item">
-        <img src="./images/Ташкент6.jpg" alt="Ташкент" class="item__photo">
-        <div class="item__figcaption">
-          <h2 class="item__title">Ташкент-Узбекистан</h2>
-          <button class="item__like-button" type="button" aria-label="Отметить как понравившийся"></button>
-        </div>
-      </article>
-    </section>
+
+    <section class="cards-container"></section>
+
   </main>
+
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
+
+  <div class="popup popup_js_edit-profile">
     <div class="popup__container">
       <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -83,7 +47,39 @@
       </form>
     </div>
   </div>
+
+  <div class="popup popup_js_add-card">
+    <div class="popup__container">
+      <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="edit-profile">
+        <input class="popup__input popup__input_js_nickname" type="text" required name="nickname" placeholder="Название">
+        <input class="popup__input popup__input_js_desc" type="text" name="desc" required placeholder="Ссылка на картинку">
+        <button class="popup__save-button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_js_view-photo">
+    <div class="popup__container">
+      <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+    </div>
+  </div>
+
+  <template class="card-template">
+    <article class="card">
+      <img class="card__photo" src="#">
+      <button class="card__remove-button" type="button" aria-label="Удалить карточку"></button>
+      <div class="card__caption">
+        <h2 class="card__title"></h2>
+        <button class="card__like-button" type="button" aria-label="Отметить как понравившуюся"></button>
+      </div>
+    </article>
+  </template>
+
   <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>
