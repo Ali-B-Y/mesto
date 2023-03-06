@@ -54,7 +54,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+// открытие и закрытие всех попапов
 const openPopup = (popup) => {
 	popup = popup.classList.add('popup_opened');
 }
@@ -63,6 +63,7 @@ const closePopup = (popup) => {
 	popup = popup.classList.remove('popup_opened');
 }
 
+// создание карточки и наполнение
 const createCard = (el => {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
   const buttonRemoveCard = card.querySelector('.card__remove-button');
@@ -92,6 +93,7 @@ const createCard = (el => {
   return card;
 })
 
+// рендеринг и обход исходного массива
 const renderCard = (el) => {
   const card = createCard(el);
   cardsContainer.prepend(card);
@@ -100,7 +102,6 @@ const renderCard = (el) => {
 initialCards.forEach(el => {
   renderCard(el);
 });
-
 
 // слушатель и обработчик кнопки редкатироваеия профиля
 const handleEditProfile = () => {
@@ -140,49 +141,15 @@ const handleFormAddCardSubmit = evt => {
   userCard.name = photoNameInput.value;
   userCard.link = photoUrlInput.value;
   renderCard(userCard);
-  cardsContainer.lastElementChild.remove();
   closePopup(popupAddCard);
+  evt.target.reset();
 }
 
-  // const addUsersCard = (photoName, photoUrl) => {
-  //   const userCard = {};
-  //   userCard.name = photoName;
-  //   userCard.link = photoUrl;
-  //   initialCards.unshift(userCard);
-  //   initialCards.pop();
-  //   return userCard
-  // }
-
-  // ((photoName, photoUrl) => {
-  //   const userCard = {};
-  //   userCard.name = photoName;
-  //   userCard.link = photoUrl;
-  //   initialCards.unshift('userCard');
-  //   initialCards.pop();
-  //   console.log(userCard)
-  // })();
-
-
-// const addUsersCard = (photoName, photoUrl) => {
-//   const userCard = {};
-//   userCard.name = photoName;
-//   userCard.link = photoUrl;
-//   initialCards.unshift('userCard');
-//   initialCards.pop();
-// }
-//
-
-
 formAddCard.addEventListener('submit', handleFormAddCardSubmit);
-
-
-
 
 buttonCloseViewPhoto.addEventListener('click', () => {
   closePopup(popupViewPhoto);
 });
-
-
 
 // const handlePopupClick = (event) => {
 // 	if (event.target === event.currentTarget) {
