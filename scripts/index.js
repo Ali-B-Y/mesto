@@ -1,28 +1,28 @@
 // попап редактировать профиль
-const popupEditProfile = document.querySelector('.popup_js_edit-profile');
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
 
 // попап добавить карточку
-const popupAddCard = document.querySelector('.popup_js_add-card');
+const popupAddCard = document.querySelector('.popup_type_add-card');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 
 // попап просмотр увеличенного фото
-const popupViewPhoto = document.querySelector('.popup_js_view-photo');
+const popupViewPhoto = document.querySelector('.popup_type_view-photo');
 const buttonCloseViewPhoto = popupViewPhoto.querySelector('.popup__close-button');
 
 // форма профиля
 const formEditProfile = document.querySelector('form[name="edit-profile"]');
-const nicknameInput = document.querySelector('.popup__input_js_nickname');
-const descInput = document.querySelector('.popup__input_js_desc');
+const nicknameInput = document.querySelector('.popup__input_type_nickname');
+const descInput = document.querySelector('.popup__input_type_desc');
 const profileNickname = document.querySelector('.profile__nickname');
 const profileDesc = document.querySelector('.profile__desc');
 
 // форма добавления карточки
 const formAddCard = document.querySelector('form[name="add-card"]');
-const photoNameInput = document.querySelector('.popup__input_js_photo-name');
-const photoUrlInput = document.querySelector('.popup__input_js_photo-url');
+const photoNameInput = document.querySelector('.popup__input_type_photo-name');
+const photoUrlInput = document.querySelector('.popup__input_type_photo-url');
 
 // контейнер для будущих карточек и шаблон карточек
 const cardsContainer = document.querySelector('.cards-container');
