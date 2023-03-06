@@ -52,19 +52,19 @@
     <div class="popup__container">
       <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="edit-profile">
-        <input class="popup__input popup__input_js_nickname" type="text" required name="nickname" placeholder="Название">
-        <input class="popup__input popup__input_js_desc" type="text" name="desc" required placeholder="Ссылка на картинку">
+      <form class="popup__form" name="add-card">
+        <input class="popup__input popup__input_js_photo-name" type="text" required name="photo-name" placeholder="Название">
+        <input class="popup__input popup__input_js_photo-url" type="text" name="photo-url" required placeholder="Ссылка на картинку">
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
     </div>
   </div>
 
-  <div class="popup-view popup_js_view-photo popup">
-    <div class="popup-view__container">
-      <button class="popup-view__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
-      <img class="popup-view__photo">
-      <h2 class="popup-view__title"></h2>
+  <div class="popup popup_js_view-photo">
+    <div class="popup__photo-container">
+      <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <img class="popup__photo">
+      <h2 class="popup__photo-caption"></h2>
     </div>
   </div>
 
