@@ -63,7 +63,7 @@ const closePopup = (popup) => {
 	popup = popup.classList.remove('popup_opened');
 }
 
-const createCard = ((data) => {
+const createCard = (el => {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
   const buttonRemoveCard = card.querySelector('.card__remove-button');
   const buttonLikeCard = card.querySelector('.card__like-button');
@@ -86,15 +86,15 @@ const createCard = ((data) => {
   buttonRemoveCard.addEventListener('click', handleRemoveCard);
   buttonLikeCard.addEventListener('click',handleLikeButton);
   cardPhoto.addEventListener('click', handleCardPhoto);
-  cardPhoto.src = data.link;
-  cardTitle.textContent = data.name;
-  cardPhoto.alt = data.name;
+  cardPhoto.src = el.link;
+  cardTitle.textContent = el.name;
+  cardPhoto.alt = el.name;
   return card;
 })
 
-const renderCard = (data) => {
-  const card = createCard(data);
-  cardsContainer.append(card);
+const renderCard = (el) => {
+  const card = createCard(el);
+  cardsContainer.prepend(card);
 }
 
 initialCards.forEach(el => {
@@ -139,12 +139,8 @@ const handleFormAddCardSubmit = evt => {
   const userCard = {};
   userCard.name = photoNameInput.value;
   userCard.link = photoUrlInput.value;
-  console.log(userCard)
-  initialCards.unshift(userCard);
-  initialCards.pop();
-  initialCards.forEach(el => {
-    renderCard(el);
-  });
+  renderCard(userCard);
+  cardsContainer.lastElementChild.remove();
   closePopup(popupAddCard);
 }
 
