@@ -41,8 +41,10 @@
       <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="edit-profile">
-        <input class="popup__input popup__input_type_nickname" type="text" required name="nickname" placeholder="Имя">
-        <input class="popup__input popup__input_type_desc" type="text" name="desc" required placeholder="Описание">
+        <input class="popup__input popup__input_type_nickname" type="text" id="input-nickname" minlength="2" maxlength="40" required name="nickname" placeholder="Имя">
+        <span class="popup__error input-nickname-error"></span>
+        <input class="popup__input popup__input_type_desc" type="text" id="input-desc" name="desc" minlength="2" maxlength="200" required placeholder="Описание">
+        <span class="popup__error input-desc-error"></span>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -53,8 +55,10 @@
       <button class="popup__close-button hover" type="button" aria-label="Закрыть всплывающее окно"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="add-card">
-        <input class="popup__input popup__input_type_photo-name" type="text" required name="photo-name" placeholder="Название">
-        <input class="popup__input popup__input_type_photo-url" type="text" name="photo-url" required placeholder="Ссылка на картинку">
+        <input class="popup__input popup__input_type_photo-name" type="text" id="input-photo-name" minlength="2" maxlength="30" required name="photo-name" placeholder="Название">
+        <span class="popup__error input-photo-name-error"></span>
+        <input class="popup__input popup__input_type_photo-url" type="url" id="input-photo-url" name="photo-url" required placeholder="Ссылка на картинку">
+        <span class="popup__error input-photo-url-error"></span>
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
     </div>
@@ -78,7 +82,7 @@
       </div>
     </article>
   </template>
-  
+
   <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 

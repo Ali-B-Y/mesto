@@ -1,16 +1,16 @@
 // попап редактировать профиль
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
-const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__close-button');
 
 // попап добавить карточку
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const buttonAddCard = document.querySelector('.profile__add-button');
-const buttonCloseAddCard = popupAddCard.querySelector('.popup__close-button');
 
 // попап просмотр увеличенного фото
 const popupViewPhoto = document.querySelector('.popup_type_view-photo');
-const buttonCloseViewPhoto = popupViewPhoto.querySelector('.popup__close-button');
+
+//кнопки закрытия всех попапов
+const buttonsClose = document.querySelectorAll('.popup__close-button');
 
 // форма профиля
 const formEditProfile = document.querySelector('form[name="edit-profile"]');
@@ -54,14 +54,34 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 // открытие и закрытие всех попапов
+closePopupByEsc = (evt) => {
+  if(evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+};
+
 const openPopup = (popup) => {
-	popup = popup.classList.add('popup_opened');
+	popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 const closePopup = (popup) => {
-	popup = popup.classList.remove('popup_opened');
+	popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
+
+buttonsClose.forEach(button => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup))
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+  });
+})
 
 // создание карточки и наполнение
 const createCard = (el => {
@@ -103,27 +123,23 @@ initialCards.forEach(el => {
   renderCard(el);
 });
 
-// слушатель и обработчик кнопки редкатироваеия профиля
+// слушатель и обработчик кнопки редактироваеия профиля
 const handleEditProfile = () => {
   nicknameInput.value = profileNickname.textContent;
   descInput.value = profileDesc.textContent;
+  clearErrorValidation(formEditProfile, validationConfiguration);
   openPopup(popupEditProfile);
 }
 
 buttonEditProfile.addEventListener('click', handleEditProfile);
-buttonCloseEditProfile.addEventListener('click', () => {
-  closePopup(popupEditProfile);
-});
 
 // слушатель и обработчик кнопки добавить карточку
 const handleAddCard = () => {
+  clearErrorValidation(formAddCard, validationConfiguration);
   openPopup(popupAddCard);
 }
 
 buttonAddCard.addEventListener('click', handleAddCard);
-buttonCloseAddCard.addEventListener('click', () => {
-  closePopup(popupAddCard);
-});
 
 // слушатель и обработчик формы профиля
 const handleFormEditProfileSubmit = evt => {
@@ -132,6 +148,7 @@ const handleFormEditProfileSubmit = evt => {
   profileDesc.textContent = descInput.value;
   closePopup(popupEditProfile);
 }
+
 formEditProfile.addEventListener('submit', handleFormEditProfileSubmit);
 
 // слушатель и обработчик формы добавления карточки пользователя
@@ -147,14 +164,4 @@ const handleFormAddCardSubmit = evt => {
 
 formAddCard.addEventListener('submit', handleFormAddCardSubmit);
 
-buttonCloseViewPhoto.addEventListener('click', () => {
-  closePopup(popupViewPhoto);
-});
 
-// const handlePopupClick = (event) => {
-// 	if (event.target === event.currentTarget) {
-// 		popup.classList.remove('popup_opened');
-// 	}
-// }
-
-//popup.addEventListener('click', handlePopupClick);

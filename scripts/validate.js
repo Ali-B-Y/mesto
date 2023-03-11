@@ -1,12 +1,13 @@
 const validationConfiguration = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__submit-btn_disabled',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
+  errorClass: 'popup__error_visible'
 };
 
+//отображение ошибки инпута
 const showInputError = (form, input, inputErrorClass, errorClass, errorMessage) => {
   const error = form.querySelector(`.${input.id}-error`);
   input.classList.add(inputErrorClass);
@@ -14,6 +15,7 @@ const showInputError = (form, input, inputErrorClass, errorClass, errorMessage) 
   error.classList.add(errorClass);
 };
 
+//скрытие ошибки инпута
 const hideInputError = (form, input, inputErrorClass, errorClass) => {
   const error = form.querySelector(`.${input.id}-error`);
   input.classList.remove(inputErrorClass);
