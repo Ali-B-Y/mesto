@@ -8,21 +8,19 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 
 // попап просмотр увеличенного фото
 const popupViewPhoto = document.querySelector('.popup_type_view-photo');
+const popupPhoto = popupViewPhoto.querySelector('.popup__photo');
+const popupTitle = popupViewPhoto.querySelector('.popup__photo-caption');
 
 //кнопки закрытия всех попапов
-const buttonsClose = document.querySelectorAll('.popup__close-button');
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 // форма профиля
-const formEditProfile = document.querySelector('form[name="edit-profile"]');
-const nicknameInput = document.querySelector('.popup__input_type_nickname');
-const descInput = document.querySelector('.popup__input_type_desc');
+const formEditProfile = document.forms['edit-profile'];
 const profileNickname = document.querySelector('.profile__nickname');
 const profileDesc = document.querySelector('.profile__desc');
 
 // форма добавления карточки
-const formAddCard = document.querySelector('form[name="add-card"]');
-const photoNameInput = document.querySelector('.popup__input_type_photo-name');
-const photoUrlInput = document.querySelector('.popup__input_type_photo-url');
+const formAddCard = document.forms['add-card'];
 
 // контейнер для будущих карточек и шаблон карточек
 const cardsContainer = document.querySelector('.cards-container');
@@ -54,9 +52,8 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
 // открытие и закрытие всех попапов
-closePopupByEsc = (evt) => {
+const closePopupByEsc = (evt) => {
   if(evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
@@ -73,7 +70,7 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closePopupByEsc);
 }
 
-buttonsClose.forEach(button => {
+closeButtons.forEach(button => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup))
   popup.addEventListener('mousedown', (evt) => {
@@ -97,8 +94,6 @@ const createCard = (el => {
     card.remove();
   }
   const handleCardPhoto = () => {
-    const popupPhoto = popupViewPhoto.querySelector('.popup__photo');
-    const popupTitle = popupViewPhoto.querySelector('.popup__photo-caption');
     popupPhoto.src = cardPhoto.src;
     popupPhoto.alt = cardPhoto.alt;
     popupTitle.textContent = cardTitle.textContent;
@@ -119,14 +114,12 @@ const renderCard = (el) => {
   cardsContainer.prepend(card);
 }
 
-initialCards.forEach(el => {
-  renderCard(el);
-});
+initialCards.forEach(renderCard);
 
 // слушатель и обработчик кнопки редактироваеия профиля
 const handleEditProfile = () => {
-  nicknameInput.value = profileNickname.textContent;
-  descInput.value = profileDesc.textContent;
+  formEditProfile.nickname.value = profileNickname.textContent;
+  formEditProfile.desc.value = profileDesc.textContent;
   clearErrorValidation(formEditProfile, validationConfiguration);
   openPopup(popupEditProfile);
 }
@@ -134,34 +127,31 @@ const handleEditProfile = () => {
 buttonEditProfile.addEventListener('click', handleEditProfile);
 
 // слушатель и обработчик кнопки добавить карточку
-const handleAddCard = () => {
+const openAddCardPopup = () => {
   clearErrorValidation(formAddCard, validationConfiguration);
   openPopup(popupAddCard);
 }
 
-buttonAddCard.addEventListener('click', handleAddCard);
+buttonAddCard.addEventListener('click', openAddCardPopup);
 
 // слушатель и обработчик формы профиля
 const handleFormEditProfileSubmit = evt => {
   evt.preventDefault();
-  profileNickname.textContent = nicknameInput.value;
-  profileDesc.textContent = descInput.value;
+  profileNickname.textContent = formEditProfile.nickname.value;
+  profileDesc.textContent = formEditProfile.desc.value;
   closePopup(popupEditProfile);
 }
-
 formEditProfile.addEventListener('submit', handleFormEditProfileSubmit);
 
 // слушатель и обработчик формы добавления карточки пользователя
 const handleFormAddCardSubmit = evt => {
   evt.preventDefault();
   const userCard = {};
-  userCard.name = photoNameInput.value;
-  userCard.link = photoUrlInput.value;
+  userCard.name = formAddCard.title.value;
+  userCard.link = formAddCard.link.value;
   renderCard(userCard);
   closePopup(popupAddCard);
   evt.target.reset();
 }
 
 formAddCard.addEventListener('submit', handleFormAddCardSubmit);
-
-
