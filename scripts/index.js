@@ -91,7 +91,7 @@ const handleCardPhoto = (cardPhoto) => {
 }
 
 // рендеринг и обход исходного массива
-const renderCard = (cardData, cardTemplate, handleCardPhoto) => {
+const renderCard = (cardData) => {
   const card = new Card(cardData, cardTemplate, handleCardPhoto);
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement);
@@ -100,6 +100,14 @@ const renderCard = (cardData, cardTemplate, handleCardPhoto) => {
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
+
+// initialCards.forEach((cardData) => {
+//   const card = new Card(cardData, cardTemplate, handleCardPhoto);
+//   const cardElement = card.generateCard();
+//   cardsContainer.prepend(cardElement);
+// });
+
+
 
 // слушатель и обработчик кнопки редактироваеия профиля
 const handleEditProfile = () => {

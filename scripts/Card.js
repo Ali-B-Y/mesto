@@ -5,7 +5,6 @@ export class Card {
     this.templateElement = templateElement;
     this.handleCardPhoto = handleCardPhoto;
   }
-  console.log(this.templateElement);
 
   getTemplate() {
     return this.templateElement.querySelector('.card').cloneNode(true);
