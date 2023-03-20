@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
 // попап редактировать профиль
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
@@ -28,28 +31,28 @@ const cardTemplate = document.querySelector('.card-template').content;
 
 const initialCards = [
   {
-    name: 'Ашхабад-Туркмения',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Астана-Казахстан',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Бишкек-Киргизия',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Душанбе-Таджикистан',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Ташкент-Узбекистан',
+    link: 'https://i.ibb.co/KXdXsLq/6.jpg'
   },
   {
     name: 'Кабул-Афганистан',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: 'https://i.ibb.co/gZwV5h3/5.jpg'
   },
   {
-    name: 'Ташкент-Узбекистан',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Душанбе-Таджикистан',
+    link: 'https://i.ibb.co/k0GVbxt/4.jpg'
+  },
+  {
+    name: 'Бишкек-Киргизия',
+    link: 'https://i.ibb.co/kQQwgkC/3.jpg'
+  },
+  {
+    name: 'Астана-Казахстан',
+    link: 'https://i.ibb.co/FwtSWpd/2.jpg'
+  },
+  {
+    name: 'Ашхабад-Туркмения',
+    link: 'https://i.ibb.co/d2QNKP5/1.jpg'
   }
 ];
 // открытие и закрытие всех попапов
@@ -80,41 +83,23 @@ closeButtons.forEach(button => {
   });
 })
 
-// создание карточки и наполнение
-const createCard = (el => {
-  const card = cardTemplate.querySelector('.card').cloneNode(true);
-  const buttonRemoveCard = card.querySelector('.card__remove-button');
-  const buttonLikeCard = card.querySelector('.card__like-button');
-  const cardPhoto = card.querySelector('.card__photo');
-  const cardTitle = card.querySelector('.card__title');
-  const handleLikeButton = () => {
-    buttonLikeCard.classList.toggle('card__like-button_active');
-  }
-  const handleRemoveCard = () => {
-    card.remove();
-  }
-  const handleCardPhoto = () => {
-    popupPhoto.src = cardPhoto.src;
-    popupPhoto.alt = cardPhoto.alt;
-    popupTitle.textContent = cardTitle.textContent;
-    openPopup(popupViewPhoto);
-  }
-  buttonRemoveCard.addEventListener('click', handleRemoveCard);
-  buttonLikeCard.addEventListener('click',handleLikeButton);
-  cardPhoto.addEventListener('click', handleCardPhoto);
-  cardPhoto.src = el.link;
-  cardTitle.textContent = el.name;
-  cardPhoto.alt = el.name;
-  return card;
-})
-
-// рендеринг и обход исходного массива
-const renderCard = (el) => {
-  const card = createCard(el);
-  cardsContainer.prepend(card);
+const handleCardPhoto = (cardPhoto) => {
+  popupPhoto.src = cardPhoto.src;
+  popupPhoto.alt = cardPhoto.alt;
+  popupTitle.textContent = cardPhoto.alt;
+  openPopup(popupViewPhoto);
 }
 
-initialCards.forEach(renderCard);
+// рендеринг и обход исходного массива
+const renderCard = (cardData, cardTemplate, handleCardPhoto) => {
+  const card = new Card(cardData, cardTemplate, handleCardPhoto);
+  const cardElement = card.generateCard();
+  cardsContainer.prepend(cardElement);
+}
+
+initialCards.forEach((cardData) => {
+  renderCard(cardData);
+});
 
 // слушатель и обработчик кнопки редактироваеия профиля
 const handleEditProfile = () => {
@@ -141,6 +126,7 @@ const handleFormEditProfileSubmit = evt => {
   profileDesc.textContent = formEditProfile.desc.value;
   closePopup(popupEditProfile);
 }
+
 formEditProfile.addEventListener('submit', handleFormEditProfileSubmit);
 
 // слушатель и обработчик формы добавления карточки пользователя
