@@ -61,7 +61,7 @@ export class FormValidator {
       this._setEventListeners();
   };
 
-  _clearErrorValidation = () => {
+  clearErrorValidation = () => {
     this._inputList.forEach((input) => {
       this._hideInputError(input);
     });

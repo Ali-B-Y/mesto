@@ -128,20 +128,18 @@ initialCards.forEach((cardData) => {
 const createFormValidator = (formElement) => {
   const formValidator = new FormValidator(validationConfiguration, formElement);
   formValidator.enableValidation();
+  return formValidator
 }
 
 // вызов валидации
-createFormValidator(formEditProfile);
-createFormValidator(formAddCard);
-
-
-
+const formEditProfileValidator = createFormValidator(formEditProfile);
+const formAddCardValidator = createFormValidator(formAddCard);
 
 // слушатель и обработчик кнопки редактироваеия профиля
 const handleEditProfile = () => {
   formEditProfile.nickname.value = profileNickname.textContent;
   formEditProfile.desc.value = profileDesc.textContent;
-  // clearErrorValidation(formEditProfile, validationConfiguration);
+  formEditProfileValidator.clearErrorValidation();
   openPopup(popupEditProfile);
 }
 
@@ -149,7 +147,7 @@ buttonEditProfile.addEventListener('click', handleEditProfile);
 
 // слушатель и обработчик кнопки добавить карточку
 const openAddCardPopup = () => {
-  // clearErrorValidation(formAddCard, validationConfiguration);
+  formAddCardValidator.clearErrorValidation();
   openPopup(popupAddCard);
 }
 
