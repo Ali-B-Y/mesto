@@ -102,7 +102,7 @@ const handleCardPhoto = (cardPhoto) => {
   openPopup(popupViewPhoto);
 }
 
-// создание карточки
+// создание экземпляра карточки
 const createCard = (cardData) => {
   const card = new Card(cardData, cardTemplate, handleCardPhoto);
   return card.generateCard();
@@ -124,11 +124,15 @@ initialCards.forEach((cardData) => {
 //   cardsContainer.prepend(cardElement);
 // });
 
-// создание формы валидации
-const createFormValidator =
+// создание экземпляров форм валидации
+const createFormValidator = (formElement) => {
+  const formValidator = new FormValidator(validationConfiguration, formElement);
+  formValidator.enableValidation();
+}
 
 // вызов валидации
-enableValidation(validationConfiguration, form);
+createFormValidator(formEditProfile);
+createFormValidator(formAddCard);
 
 
 
@@ -137,7 +141,7 @@ enableValidation(validationConfiguration, form);
 const handleEditProfile = () => {
   formEditProfile.nickname.value = profileNickname.textContent;
   formEditProfile.desc.value = profileDesc.textContent;
-  clearErrorValidation(formEditProfile, validationConfiguration);
+  // clearErrorValidation(formEditProfile, validationConfiguration);
   openPopup(popupEditProfile);
 }
 
@@ -145,7 +149,7 @@ buttonEditProfile.addEventListener('click', handleEditProfile);
 
 // слушатель и обработчик кнопки добавить карточку
 const openAddCardPopup = () => {
-  clearErrorValidation(formAddCard, validationConfiguration);
+  // clearErrorValidation(formAddCard, validationConfiguration);
   openPopup(popupAddCard);
 }
 
