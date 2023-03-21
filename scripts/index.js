@@ -128,7 +128,7 @@ initialCards.forEach((cardData) => {
 const createFormValidator = (formElement) => {
   const formValidator = new FormValidator(validationConfiguration, formElement);
   formValidator.enableValidation();
-  return formValidator
+  return formValidator;
 }
 
 // вызов валидации
