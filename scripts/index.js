@@ -29,6 +29,16 @@ const formAddCard = document.forms['add-card'];
 const cardsContainer = document.querySelector('.cards-container');
 const cardTemplate = document.querySelector('.card-template').content;
 
+// объект настроек с селекторами и классами формы;
+const validationConfiguration = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+// исходный массив с данными будущих 6-и карточек начального экрана
 const initialCards = [
   {
     name: 'Ташкент-Узбекистан',
@@ -55,6 +65,7 @@ const initialCards = [
     link: 'https://i.ibb.co/d2QNKP5/1.jpg'
   }
 ];
+
 // открытие и закрытие всех попапов
 const closePopupByEsc = (evt) => {
   if(evt.key === 'Escape') {
@@ -83,6 +94,7 @@ closeButtons.forEach(button => {
   });
 })
 
+// обработчик просмотра увеличенного фото
 const handleCardPhoto = (cardPhoto) => {
   popupPhoto.src = cardPhoto.src;
   popupPhoto.alt = cardPhoto.alt;
@@ -90,13 +102,18 @@ const handleCardPhoto = (cardPhoto) => {
   openPopup(popupViewPhoto);
 }
 
-// рендеринг и обход исходного массива
-const renderCard = (cardData) => {
+// создание карточки
+const createCard = (cardData) => {
   const card = new Card(cardData, cardTemplate, handleCardPhoto);
-  const cardElement = card.generateCard();
-  cardsContainer.prepend(cardElement);
+  return card.generateCard();
 }
 
+// рендеринг карточки
+const renderCard = (cardData) => {
+  cardsContainer.prepend(createCard(cardData));
+}
+
+// обход исходного массива
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
@@ -106,6 +123,13 @@ initialCards.forEach((cardData) => {
 //   const cardElement = card.generateCard();
 //   cardsContainer.prepend(cardElement);
 // });
+
+// создание формы валидации
+const createFormValidator =
+
+// вызов валидации
+enableValidation(validationConfiguration, form);
+
 
 
 

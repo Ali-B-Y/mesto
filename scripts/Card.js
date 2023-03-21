@@ -1,45 +1,45 @@
 export class Card {
   constructor(data, templateElement, handleCardPhoto) {
-    this.name = data.name;
-    this.link = data.link;
-    this.templateElement = templateElement;
-    this.handleCardPhoto = handleCardPhoto;
+    this._name = data.name;
+    this._link = data.link;
+    this._templateElement = templateElement;
+    this._handleCardPhoto = handleCardPhoto;
   }
 
-  getTemplate() {
-    return this.templateElement.querySelector('.card').cloneNode(true);
+  _getTemplate() {
+    return this._templateElement.querySelector('.card').cloneNode(true);
   }
 
-  handleLikeButton = () => {
-    this.buttonLikeCard.classList.toggle('card__like-button_active');
+  _handleLikeButton = () => {
+    this._buttonLikeCard.classList.toggle('card__like-button_active');
   }
 
-  handleRemoveCard = () => {
-    this.card.remove();
+  _handleRemoveCard = () => {
+    this._card.remove();
   }
 
-  setEventListeners = () => {
-    this.buttonRemoveCard.addEventListener('click', () => {
-      this.handleRemoveCard();
+  _setEventListeners = () => {
+    this._buttonRemoveCard.addEventListener('click', () => {
+      this._handleRemoveCard();
     });
-    this.buttonLikeCard.addEventListener('click', () => {
-      this.handleLikeButton();
+    this._buttonLikeCard.addEventListener('click', () => {
+      this._handleLikeButton();
     });
-    this.cardPhoto.addEventListener('click', () => {
-      this.handleCardPhoto(this.cardPhoto);
+    this._cardPhoto.addEventListener('click', () => {
+      this._handleCardPhoto(this._cardPhoto);
     });
   }
 
   generateCard = () => {
-    this.card = this.getTemplate();
-    this.buttonRemoveCard = this.card.querySelector('.card__remove-button');
-    this.buttonLikeCard = this.card.querySelector('.card__like-button');
-    this.cardPhoto = this.card.querySelector('.card__photo');
-    this.cardTitle = this.card.querySelector('.card__title');
-    this.setEventListeners();
-    this.cardPhoto.src = this.link;
-    this.cardTitle.textContent = this.name;
-    this.cardPhoto.alt = this.name;
-    return this.card;
+    this._card = this._getTemplate();
+    this._buttonRemoveCard = this._card.querySelector('.card__remove-button');
+    this._buttonLikeCard = this._card.querySelector('.card__like-button');
+    this._cardPhoto = this._card.querySelector('.card__photo');
+    this._cardTitle = this._card.querySelector('.card__title');
+    this._setEventListeners();
+    this._cardPhoto.src = this._link;
+    this._cardTitle.textContent = this._name;
+    this._cardPhoto.alt = this._name;
+    return this._card;
   }
 }
