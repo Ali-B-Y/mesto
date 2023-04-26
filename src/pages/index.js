@@ -1,73 +1,24 @@
 import './index.css';
-import Card from '../scripts/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import Section from '../scripts/Section.js';
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import UserInfo from '../scripts/UserInfo.js';
-
-// попап редактировать профиль
-const popupEditProfileSelector = '.popup_type_edit-profile';
-const buttonEditProfile = document.querySelector('.profile__edit-button');
-
-// попап добавить карточку
-const popupAddCardSelector = '.popup_type_add-card';
-const buttonAddCard = document.querySelector('.profile__add-button');
-
-// попап просмотр увеличенного фото
-const popupViewPhotoSelector = '.popup_type_view-photo';
-
-// форма профиля
-const formEditProfile = document.forms['edit-profile'];
-
-// форма добавления карточки
-const formAddCard = document.forms['add-card'];
-
-// контейнер для будущих карточек и шаблон карточек
-const cardsContainerSelector = '.cards-container';
-const cardTemplate = document.querySelector('.card-template').content;
-
-// объект настроек с селекторами и классами формы;
-export const validationConfiguration = {
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-// исходный массив с данными будущих 6-и карточек начального экрана
-const initialCards = [
-  {
-    name: 'Ташкент-Узбекистан',
-    link: 'https://i.ibb.co/KXdXsLq/6.jpg'
-  },
-  {
-    name: 'Кабул-Афганистан',
-    link: 'https://i.ibb.co/gZwV5h3/5.jpg'
-  },
-  {
-    name: 'Душанбе-Таджикистан',
-    link: 'https://i.ibb.co/k0GVbxt/4.jpg'
-  },
-  {
-    name: 'Бишкек-Киргизия',
-    link: 'https://i.ibb.co/kQQwgkC/3.jpg'
-  },
-  {
-    name: 'Астана-Казахстан',
-    link: 'https://i.ibb.co/FwtSWpd/2.jpg'
-  },
-  {
-    name: 'Ашхабад-Туркмения',
-    link: 'https://i.ibb.co/d2QNKP5/1.jpg'
-  }
-];
-
-const profileInfo = {
-  nicknameSelector: '.profile__nickname',
-  descriptionSelector: '.profile__desc',
-};
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import Section from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import UserInfo from '../scripts/components/UserInfo.js';
+import {
+  buttonAddCard,
+  buttonEditProfile,
+  cardsContainerSelector,
+  cardTemplate,
+  formAddCard,
+  formEditProfile,
+  initialCards,
+  popupAddCardSelector,
+  popupEditProfileSelector,
+  popupViewPhotoSelector,
+  profileInfo,
+  validationConfiguration
+} from "../scripts/utils/constants.js";
 
 const userInfo = new UserInfo(profileInfo);
 
