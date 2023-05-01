@@ -1,5 +1,5 @@
 // попап редактировать профиль
-  export const popupEditProfileSelector = '.popup_type_edit-profile',
+export const popupEditProfileSelector = '.popup_type_edit-profile',
   buttonEditProfile = document.querySelector('.profile__edit-button'),
 
 // попап добавить карточку
@@ -9,11 +9,21 @@
 // попап просмотр увеличенного фото
   popupViewPhotoSelector = '.popup_type_view-photo',
 
+//попап подтверждения удаления карточки
+  popupDeleteCardSelector = '.popup_type_delete-card',
+  buttonEditAvatar = document.querySelector('.profile__avatar-edit'),
+
+  //попап редактирования аватара
+  popupEditAvatarSelector = '.popup_type_edit-avatar',
+
 // форма профиля
   formEditProfile = document.forms['edit-profile'],
 
 // форма добавления карточки
   formAddCard = document.forms['add-card'],
+
+  //форма редактирования аватара
+  formEditAvatar = document.forms['edit-avatar'],
 
 // контейнер для будущих карточек и шаблон карточек
   cardsContainerSelector = '.cards-container',
@@ -28,35 +38,16 @@
     errorClass: 'popup__error_visible'
   },
 
-// исходный массив с данными будущих 6-и карточек начального экрана
-  initialCards = [
-    {
-      name: 'Ташкент-Узбекистан',
-      link: 'https://i.ibb.co/KXdXsLq/6.jpg'
-    },
-    {
-      name: 'Кабул-Афганистан',
-      link: 'https://i.ibb.co/gZwV5h3/5.jpg'
-    },
-    {
-      name: 'Душанбе-Таджикистан',
-      link: 'https://i.ibb.co/k0GVbxt/4.jpg'
-    },
-    {
-      name: 'Бишкек-Киргизия',
-      link: 'https://i.ibb.co/kQQwgkC/3.jpg'
-    },
-    {
-      name: 'Астана-Казахстан',
-      link: 'https://i.ibb.co/FwtSWpd/2.jpg'
-    },
-    {
-      name: 'Ашхабад-Туркмения',
-      link: 'https://i.ibb.co/d2QNKP5/1.jpg'
-    }
-  ],
-
   profileInfo = {
     nicknameSelector: '.profile__nickname',
     descriptionSelector: '.profile__desc',
+    avatarSelector: '.profile__avatar'
+  },
+
+  apiSettings = {
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+    headers: {
+      authorization: 'a9540b87-8667-40ff-a62a-c3c072b9a9c4',
+      'Content-Type': 'application/json'
+    }
   };
