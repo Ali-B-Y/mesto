@@ -1,5 +1,5 @@
 // попап редактировать профиль
-export const popupEditProfileSelector = '.popup_type_edit-profile',
+  export const popupEditProfileSelector = '.popup_type_edit-profile',
   buttonEditProfile = document.querySelector('.profile__edit-button'),
 
 // попап добавить карточку
